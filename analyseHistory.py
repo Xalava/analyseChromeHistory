@@ -30,18 +30,18 @@ site_frequencies.reset_index(level=0, inplace=True)
 # Rename columns to appropriate names
 site_frequencies.columns = ['domain', 'count']
 # Display top 2
-print(site_frequencies.head(50))
+print(site_frequencies.head(30))
 
 
 
 
 import matplotlib.pyplot as plt
-topN = 20
+topN = 30
 plt.figure(1, figsize=(10,10))
 plt.title('Top $n Sites Visited'.replace('$n', str(topN)))
 pie_data = site_frequencies['count'].head(topN).tolist()
 pie_labels = None
 # Uncomment to get specific domain names
-# pie_labels = site_frequencies['domain'].head(topN).tolist()
+pie_labels = site_frequencies['domain'].head(topN).tolist()
 plt.pie(pie_data, autopct='%1.1f%%', labels=pie_labels)
 plt.show()
